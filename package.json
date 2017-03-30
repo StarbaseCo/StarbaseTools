@@ -1,0 +1,16 @@
+{
+  "name": "starbase-tools",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Starbase <dev@starbase.co>",
+  "license": "GPL-3.0",
+  "repository": "git@github.com:StarbaseCo/StarbaseTools.git",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "superagent-promise": "^1.1.0"
+  }
+}

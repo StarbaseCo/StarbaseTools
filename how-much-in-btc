@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const agent = require('superagent-promise')(require('superagent'), Promise)
+
+program
+  .version('0.1.0')
+  .arguments('<amount> <currency-code> <date>')
+
+program.action((amount, currencyCode, date) => {
+  if (!amount || !currencyCode || !date) {
+    console.error('invalid arguments!')
+    process.exit(1)
+  }
+
+  const fiatRateUrl = `http://api.fixer.io/${date}?base=USD`
+  const btcRateUrl = `http://api.coindesk.com/v1/bpi/historical/close.json?start=${date}&end=${date}`
+  Promise.all([
+    agent.get(fiatRateUrl),
+    agent.get(btcRateUrl).buffer(),
+  ]).then(([fiatRes, btcRes]) => {
+    const fiatRate = fiatRes.body.rates[currencyCode.toUpperCase()]
+    const btcRate = JSON.parse(btcRes.text).bpi[date]
+    console.log(`${amount} ${currencyCode.toUpperCase()} is equal to ${(parseFloat(amount) / fiatRate / btcRate).toPrecision(5)} BTC`)
+  })
+})
+
+program.parse(process.argv)
+
