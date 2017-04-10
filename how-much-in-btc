@@ -19,7 +19,7 @@ program.action((amount, currencyCode, date) => {
     agent.get(fiatRateUrl),
     agent.get(btcRateUrl).buffer(),
   ]).then(([fiatRes, btcRes]) => {
-    const fiatRate = fiatRes.body.rates[currencyCode.toUpperCase()]
+    const fiatRate = currencyCode.toUpperCase() === 'USD' ? 1 : fiatRes.body.rates[currencyCode.toUpperCase()]
     const btcRate = JSON.parse(btcRes.text).bpi[date]
     console.log(`${amount} ${currencyCode.toUpperCase()} is equal to ${(parseFloat(amount) / fiatRate / btcRate).toPrecision(5)} BTC`)
   })
