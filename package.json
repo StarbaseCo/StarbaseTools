@@ -11,6 +11,7 @@
   "repository": "git@github.com:StarbaseCo/StarbaseTools.git",
   "dependencies": {
     "commander": "^2.9.0",
+    "superagent": "^3.5.2",
     "superagent-promise": "^1.1.0"
   }
 }
