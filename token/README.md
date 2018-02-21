@@ -11,3 +11,5 @@ $ cat allocation-xxx.csv
 0xBBB,200
 $ node ./allocate-ec-tokens 0xCCC allocation-xxx.csv
 ```
+
+WARNING: **Don't execute this script twice or more with the same file, or you would allocate extra tokens to them!**
