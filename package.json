@@ -10,8 +10,12 @@
   "license": "GPL-3.0",
   "repository": "git@github.com:StarbaseCo/StarbaseTools.git",
   "dependencies": {
+    "bignumber.js": "^6.0.0",
     "commander": "^2.9.0",
+    "fast-csv": "^2.4.1",
     "superagent": "^3.5.2",
-    "superagent-promise": "^1.1.0"
-  }
+    "superagent-promise": "^1.1.0",
+    "web3": "^1.0.0-beta.30"
+  },
+  "devDependencies": {}
 }
